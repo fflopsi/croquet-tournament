@@ -13,7 +13,9 @@ import me.frauenfelderflorian.crocket.data.Tournament;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.MissingResourceException;
 import java.util.Optional;
+import java.util.ResourceBundle;
 import java.util.prefs.Preferences;
 
 /**
@@ -42,7 +44,7 @@ public class App extends Application {
         if (loadTournament(getPreference(preferenceKey.CURRENT_TOURNAMENT))) {
             //show main window only if the tournament could be loaded correctly
             stage.setScene(new Scene(loadFXML("Selection")));
-            stage.setTitle("Crocket-Turnier");
+            stage.setTitle(getString("appTitle"));
             stage.show();
             stage.setMinHeight(stage.getHeight());
             stage.setMinWidth(stage.getWidth());
@@ -58,20 +60,20 @@ public class App extends Application {
         } catch (ClassNotFoundException | IOException e) {
             //dialog with two options: cancel and close program or create new tournament
             System.out.println("tournament could not be loaded");
-            ButtonType editInput = new ButtonType("anderes Turnier", ButtonBar.ButtonData.NEXT_FORWARD);
-            ButtonType newInput = new ButtonType("neues Turnier", ButtonBar.ButtonData.BACK_PREVIOUS);
-            Alert alert = new Alert(Alert.AlertType.WARNING, "Turnier konnte nicht geladen werden",
+            ButtonType editInput = new ButtonType(getString("otherTournament"), ButtonBar.ButtonData.NEXT_FORWARD);
+            ButtonType newInput = new ButtonType(getString("newTournament"), ButtonBar.ButtonData.BACK_PREVIOUS);
+            Alert alert = new Alert(Alert.AlertType.WARNING, getString("tournamentLoadError"),
                     ButtonType.CANCEL, editInput, newInput);
-            alert.setTitle("Warnung");
-            alert.setHeaderText("Ladefehler");
+            //alert.setTitle(getString("warning"));
+            alert.setHeaderText(getString("loadingError"));
             Optional<ButtonType> result = alert.showAndWait();
             if (result.isPresent() && result.get() == editInput) {
                 //show dialog box to input another tournament name
                 alert.close();
                 TextInputDialog dialog = new TextInputDialog();
-                dialog.setTitle("Turniereingabe");
-                dialog.setHeaderText("anderes Turnier laden");
-                dialog.setContentText("Turnier:");
+                dialog.setTitle(getString("enterTournament"));
+                dialog.setHeaderText(getString("loadOtherTournament"));
+                dialog.setContentText(getString("tournament"));
                 Optional<String> otherTournament = dialog.showAndWait();
                 //try to load the new given tournament
                 if (otherTournament.isPresent()) {
@@ -83,9 +85,9 @@ public class App extends Application {
                 //show dialog box to input a new tournament name
                 alert.close();
                 TextInputDialog dialog = new TextInputDialog();
-                dialog.setTitle("Turniereingabe");
-                dialog.setHeaderText("neues Turnier erstellen");
-                dialog.setContentText("Turnier:");
+                dialog.setTitle(getString("enterTournament"));
+                dialog.setHeaderText(getString("createNewTournament"));
+                dialog.setContentText(getString("tournament"));
                 Optional<String> otherTournament = dialog.showAndWait();
                 //try to create a new tournament
                 if (otherTournament.isPresent()) {
@@ -105,11 +107,10 @@ public class App extends Application {
             tournament.save();
         } catch (IOException e) {
             System.out.println("tournament could not be saved");
-            Alert alert = new Alert(Alert.AlertType.ERROR, "Turnier konnte nicht gespeichert werden");
+            Alert alert = new Alert(Alert.AlertType.ERROR, getString("tournamentSaveError"));
             alert.showAndWait();
         } catch (NullPointerException e) {
-            System.out.println("tournament is null");
-            System.out.println("aborting");
+            System.out.println("tournament is null, aborting");
         }
     }
 
@@ -122,8 +123,14 @@ public class App extends Application {
     }
 
     public static Parent loadFXML(String fxml) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(fxml + ".fxml"));
-        return fxmlLoader.load();
+        return new FXMLLoader(App.class.getResource(fxml + ".fxml"),
+                ResourceBundle.getBundle("me.frauenfelderflorian.crocket.Strings")).load();
+    }
+
+    public static String getString(String key) {
+        if (!ResourceBundle.getBundle("me.frauenfelderflorian.crocket.Strings").containsKey(key))
+            throw new MissingResourceException("key " + key + " not found", App.class.getName(), key);
+        return ResourceBundle.getBundle("me.frauenfelderflorian.crocket.Strings").getString(key);
     }
 
     public static void main(String[] args) {
@@ -137,8 +144,7 @@ public class App extends Application {
         CURRENT_TOURNAMENT("tournament", "2021.1"),
         PLAYERS("players",
                 "Ale,Alissa,Andrin,Berzan,Christian,Elias,Evelin,Fabian,Florian,Gian,Jan,Michael,Michi,Robin,Silvan,Tim"),
-        POINTS("points", "20,17,15,14,13,12,11,10,9,8,7,6,5,4,3,2,1"),
-        ;
+        POINTS("points", "20,17,15,14,13,12,11,10,9,8,7,6,5,4,3,2,1");
 
         private final String key;
         private final String defaultValue;

@@ -4,21 +4,23 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<GridPane fx:id="grid" alignment="CENTER" hgap="10.0" vgap="10.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="me.frauenfelderflorian.crocket.SelectionController">
-    <Button onAction="#createNewGame" text="_Neues Spiel erfassen" GridPane.halignment="LEFT" />
-    <Button onAction="#viewTournament" text="_Turnierübersicht" GridPane.columnIndex="1" GridPane.halignment="RIGHT" />
-    <Button disable="true" onAction="#editGame" text="alte Spiele b_earbeiten" GridPane.halignment="LEFT" GridPane.rowIndex="1" />
-    <Button onAction="#editSettings" text="Ein_stellungen" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="1" />
+<GridPane fx:id="grid" alignment="CENTER" hgap="10.0" vgap="10.0" xmlns="http://javafx.com/javafx/11.0.1"
+          xmlns:fx="http://javafx.com/fxml/1" fx:controller="me.frauenfelderflorian.crocket.SelectionController">
+    <Button onAction="#createNewGame" text="%_newGame" GridPane.halignment="CENTER"/>
+    <Button onAction="#viewTournament" text="%_tournamentOverview" GridPane.columnIndex="1"
+            GridPane.halignment="CENTER"/>
+    <Button disable="true" onAction="#editGame" text="%_editGame" GridPane.halignment="CENTER" GridPane.rowIndex="1"/>
+    <Button onAction="#editSettings" text="%_settings" GridPane.columnIndex="1" GridPane.halignment="RIGHT"
+            GridPane.rowIndex="1"/>
     <padding>
-        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
     </padding>
     <columnConstraints>
-        <ColumnConstraints />
-        <ColumnConstraints />
-        <ColumnConstraints />
+        <ColumnConstraints/>
+        <ColumnConstraints/>
     </columnConstraints>
     <rowConstraints>
-        <RowConstraints />
-        <RowConstraints />
+        <RowConstraints/>
+        <RowConstraints/>
     </rowConstraints>
 </GridPane>

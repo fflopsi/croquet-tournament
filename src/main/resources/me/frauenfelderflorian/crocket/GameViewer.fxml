@@ -5,13 +5,15 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<VBox alignment="CENTER" spacing="20.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="me.frauenfelderflorian.crocket.GameViewerController">
-    <Label fx:id="tournamentLabel" text="Turnier">
-      <font>
-         <Font name="System Bold" size="18.0" />
-      </font></Label>
-    <GridPane fx:id="grid" hgap="20.0" vgap="10.0" />
-   <padding>
-      <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-   </padding>
+<VBox alignment="CENTER" spacing="20.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="me.frauenfelderflorian.crocket.GameViewerController">
+    <Label fx:id="tournamentLabel" text="%tournament">
+        <font>
+            <Font name="System Bold" size="18.0"/>
+        </font>
+    </Label>
+    <GridPane fx:id="grid" hgap="20.0" vgap="10.0"/>
+    <padding>
+        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
+    </padding>
 </VBox>

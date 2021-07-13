@@ -2,10 +2,8 @@ package me.frauenfelderflorian.crocket;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
 import me.frauenfelderflorian.crocket.data.Game;
 
 import java.net.URL;
@@ -20,7 +18,7 @@ public class GameViewerController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         //set text for title label
-        tournamentLabel.setText("Turnier " + App.tournament.getSemester());
+        tournamentLabel.setText(App.getString("tournament") + " " + App.tournament.getSemester());
         //set up labels for players
         int row = 1;
         for (String player : App.tournament.getOrder().keySet()) {

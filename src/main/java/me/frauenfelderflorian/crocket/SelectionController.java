@@ -16,7 +16,7 @@ public class SelectionController {
         grid.getScene().getWindow().hide();
         Stage newGame = new Stage();
         newGame.setScene(new Scene(App.loadFXML("GameEditor")));
-        newGame.setTitle("Neues Spiel erfassen");
+        newGame.setTitle(App.getString("newGame"));
         newGame.show();
         newGame.setMinHeight(newGame.getHeight());
         newGame.setMinWidth(newGame.getWidth());
@@ -27,7 +27,7 @@ public class SelectionController {
     private void viewTournament() throws IOException {
         Stage tournamentViewer = new Stage();
         tournamentViewer.setScene(new Scene(App.loadFXML("TournamentViewer")));
-        tournamentViewer.setTitle("Turnierübersicht");
+        tournamentViewer.setTitle(App.getString("tournamentOverview"));
         tournamentViewer.show();
         tournamentViewer.setMinHeight(tournamentViewer.getHeight());
         tournamentViewer.setMinWidth(tournamentViewer.getWidth());
@@ -40,7 +40,7 @@ public class SelectionController {
         grid.getScene().getWindow().hide();
         Stage editGame = new Stage();
         editGame.setScene(new Scene(App.loadFXML("GameEditor")));
-        editGame.setTitle("Spiel bearbeiten");
+        editGame.setTitle(App.getString("editGame"));
         //fill in game info
         editGame.show();
         editGame.setMinHeight(editGame.getHeight());
@@ -53,12 +53,10 @@ public class SelectionController {
         grid.getScene().getWindow().hide();
         Stage settingsEditor = new Stage();
         settingsEditor.setScene(new Scene((App.loadFXML("SettingsEditor"))));
-        settingsEditor.setTitle("Einstellungen");
+        settingsEditor.setTitle(App.getString("settings"));
         settingsEditor.show();
         settingsEditor.setMinHeight(settingsEditor.getHeight());
         settingsEditor.setMinWidth(settingsEditor.getWidth());
         settingsEditor.setOnHidden(windowEvent -> ((Stage) grid.getScene().getWindow()).show());
-        //another possibility (NOT USABLE):
-        //App.setRoot("Settingseditor");
     }
 }

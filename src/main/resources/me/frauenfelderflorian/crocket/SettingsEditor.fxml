@@ -4,54 +4,61 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<GridPane fx:id="grid" alignment="CENTER_LEFT" hgap="10.0" prefWidth="500.0" vgap="10.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="me.frauenfelderflorian.crocket.SettingsEditorController">
-    <TextField fx:id="currentTournamentEdit" promptText="aktuelles Turnier eintragen" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.hgrow="ALWAYS">
+<GridPane fx:id="grid" alignment="CENTER_LEFT" hgap="10.0" prefWidth="500.0" vgap="10.0"
+          xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"
+          fx:controller="me.frauenfelderflorian.crocket.SettingsEditorController">
+    <TextField fx:id="currentTournamentEdit" promptText="%enterCurrentTournament" GridPane.columnIndex="1"
+               GridPane.columnSpan="2" GridPane.hgrow="ALWAYS">
         <tooltip>
-            <Tooltip text="Um ein neues Turnier zu erstellen, hier einfach einen neuen Namen eintragen." />
+            <Tooltip text="%enterCurrentTournamentTooltip"/>
         </tooltip>
     </TextField>
-    <Label labelFor="$currentTournamentEdit" mnemonicParsing="true" text="aktuelles _Turnier" />
-    <TextField fx:id="playersEdit" promptText="Spieler eintragen" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1">
+    <Label labelFor="$currentTournamentEdit" mnemonicParsing="true" text="%_currentTournament"/>
+    <TextField fx:id="playersEdit" promptText="%enterPlayers" GridPane.columnIndex="1" GridPane.columnSpan="2"
+               GridPane.hgrow="ALWAYS" GridPane.rowIndex="1">
         <tooltip>
-            <Tooltip text="Spielernamen mit Kommas getrennt ohne Leerzeichen eintragen" />
+            <Tooltip text="%enterPlayersTooltip"/>
         </tooltip>
     </TextField>
-    <Label labelFor="$playersEdit" mnemonicParsing="true" text="Spie_ler" GridPane.rowIndex="1" />
-    <TextField fx:id="pointsEdit" promptText="Punkteverteilung eintragen" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2">
+    <Label labelFor="$playersEdit" mnemonicParsing="true" text="%_players" GridPane.rowIndex="1"/>
+    <TextField fx:id="pointsEdit" promptText="%enterPoints" GridPane.columnIndex="1" GridPane.columnSpan="2"
+               GridPane.hgrow="ALWAYS" GridPane.rowIndex="2">
         <tooltip>
-            <Tooltip text="Punkte für Plätze mit Kommas getrennt ohne Leerzeichen eintragen" />
+            <Tooltip text="%enterPointsTooltip"/>
         </tooltip>
     </TextField>
-    <Label labelFor="$pointsEdit" mnemonicParsing="true" text="_Punkte" GridPane.rowIndex="2" />
-    <TextField fx:id="dataDirEdit" promptText="Ordnerpfad eintragen" GridPane.columnIndex="1" GridPane.hgrow="SOMETIMES" GridPane.rowIndex="3" />
-    <Label labelFor="$dataDirEdit" mnemonicParsing="true" text="Ordner für _Daten" GridPane.rowIndex="3" />
+    <Label labelFor="$pointsEdit" mnemonicParsing="true" text="%_points" GridPane.rowIndex="2"/>
+    <TextField fx:id="dataDirEdit" promptText="%enterDirectory" GridPane.columnIndex="1" GridPane.hgrow="SOMETIMES"
+               GridPane.rowIndex="3"/>
+    <Label labelFor="$dataDirEdit" mnemonicParsing="true" text="%_dataDirectory" GridPane.rowIndex="3"/>
     <Button onAction="#selectDataDir" text="_..." GridPane.columnIndex="2" GridPane.rowIndex="3">
         <tooltip>
-            <Tooltip text="Ort auswählen..." />
+            <Tooltip text="%selectDirectoryTooltip"/>
         </tooltip>
     </Button>
-   <Button cancelButton="true" onAction="#close" text="Abbre_chen" GridPane.rowIndex="4" />
-    <HBox alignment="CENTER_RIGHT" spacing="10.0" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.hgrow="ALWAYS" GridPane.rowIndex="4">
-        <Button onAction="#save" text="_Speichern" />
-        <Button defaultButton="true" onAction="#exit" text="_OK">
+    <Button cancelButton="true" onAction="#close" text="%_cancel" GridPane.rowIndex="4"/>
+    <HBox alignment="CENTER_RIGHT" spacing="10.0" GridPane.columnIndex="1" GridPane.columnSpan="2"
+          GridPane.hgrow="ALWAYS" GridPane.rowIndex="4">
+        <Button onAction="#save" text="%_save"/>
+        <Button defaultButton="true" onAction="#exit" text="%_ok">
             <tooltip>
-                <Tooltip text="Speichern und schliessen" />
+                <Tooltip text="%exitTooltip"/>
             </tooltip>
         </Button>
     </HBox>
     <padding>
-        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
     </padding>
     <columnConstraints>
-        <ColumnConstraints />
-        <ColumnConstraints />
-        <ColumnConstraints />
+        <ColumnConstraints/>
+        <ColumnConstraints/>
+        <ColumnConstraints/>
     </columnConstraints>
     <rowConstraints>
-        <RowConstraints />
-        <RowConstraints />
-        <RowConstraints />
-      <RowConstraints />
-      <RowConstraints />
+        <RowConstraints/>
+        <RowConstraints/>
+        <RowConstraints/>
+        <RowConstraints/>
+        <RowConstraints/>
     </rowConstraints>
 </GridPane>

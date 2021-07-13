@@ -37,7 +37,7 @@ public class SettingsEditorController implements Initializable {
     @FXML
     private void selectDataDir() {
         DirectoryChooser dataDirChooser = new DirectoryChooser();
-        dataDirChooser.setTitle("Ordner für Programmdaten auswählen");
+        dataDirChooser.setTitle(App.getString("selectDirectory"));
         dataDirChooser.setInitialDirectory(new File(App.getPreference(App.preferenceKey.DATA_DIR_PATH)));
         dataDirEdit.setText(Objects.requireNonNullElse(dataDirChooser.showDialog(grid.getScene().getWindow()),
                 App.getPreference(App.preferenceKey.DATA_DIR_PATH)).toString());
@@ -52,7 +52,7 @@ public class SettingsEditorController implements Initializable {
             App.putPreference(App.preferenceKey.CURRENT_TOURNAMENT, currentTournamentEdit.getText());
         } catch (IOException e) {
             System.out.println("tournament could not be saved");
-            Alert alert = new Alert(Alert.AlertType.ERROR, "Turnier konnte nicht gespeichert werden");
+            Alert alert = new Alert(Alert.AlertType.ERROR, App.getString("tournamentSaveError"));
             alert.showAndWait();
         }
         //save players

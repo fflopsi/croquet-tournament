@@ -31,7 +31,7 @@ public class GameEditorController {
         for (ChoiceBox<?> b : boxes) {
             grid.add(b, 1, row);
             row++;
-            grid.add(new Label(row + ". Platz"), 0, row - 1);
+            grid.add(new Label(row + ". " + App.getString("place")), 0, row - 1);
             b.setMaxWidth(Double.MAX_VALUE);
         }
     }
@@ -44,7 +44,7 @@ public class GameEditorController {
             if (node instanceof ChoiceBox<?>) {
                 for (String player : playersByPoints) {
                     if (player != null && player.equals(((ChoiceBox<?>) node).getValue())) {
-                        new Alert(Alert.AlertType.ERROR, "Ein Spieler wurde mehrfach ausgewählt.",
+                        new Alert(Alert.AlertType.ERROR, App.getString("playerMultipleTimes"),
                                 ButtonType.CLOSE).showAndWait();
                         return;
                     }
