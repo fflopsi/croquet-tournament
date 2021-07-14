@@ -1,10 +1,10 @@
-package me.frauenfelderflorian.crocket;
+package me.frauenfelderflorian.croquet;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
-import me.frauenfelderflorian.crocket.data.Game;
+import me.frauenfelderflorian.croquet.data.Game;
 
 import java.net.URL;
 import java.util.ResourceBundle;

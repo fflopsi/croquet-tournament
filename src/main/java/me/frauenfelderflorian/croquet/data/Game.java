@@ -1,6 +1,6 @@
-package me.frauenfelderflorian.crocket.data;
+package me.frauenfelderflorian.croquet.data;
 
-import me.frauenfelderflorian.crocket.App;
+import me.frauenfelderflorian.croquet.App;
 
 import java.io.Serializable;
 import java.time.LocalDate;

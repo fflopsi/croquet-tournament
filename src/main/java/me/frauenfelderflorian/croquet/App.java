@@ -1,4 +1,4 @@
-package me.frauenfelderflorian.crocket;
+package me.frauenfelderflorian.croquet;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -9,7 +9,7 @@ import javafx.scene.control.ButtonBar;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextInputDialog;
 import javafx.stage.Stage;
-import me.frauenfelderflorian.crocket.data.Tournament;
+import me.frauenfelderflorian.croquet.data.Tournament;
 
 import java.io.File;
 import java.io.IOException;
@@ -124,13 +124,13 @@ public class App extends Application {
 
     public static Parent loadFXML(String fxml) throws IOException {
         return new FXMLLoader(App.class.getResource(fxml + ".fxml"),
-                ResourceBundle.getBundle("me.frauenfelderflorian.crocket.Strings")).load();
+                ResourceBundle.getBundle("me.frauenfelderflorian.croquet.Strings")).load();
     }
 
     public static String getString(String key) {
-        if (!ResourceBundle.getBundle("me.frauenfelderflorian.crocket.Strings").containsKey(key))
+        if (!ResourceBundle.getBundle("me.frauenfelderflorian.croquet.Strings").containsKey(key))
             throw new MissingResourceException("key " + key + " not found", App.class.getName(), key);
-        return ResourceBundle.getBundle("me.frauenfelderflorian.crocket.Strings").getString(key);
+        return ResourceBundle.getBundle("me.frauenfelderflorian.croquet.Strings").getString(key);
     }
 
     public static void main(String[] args) {

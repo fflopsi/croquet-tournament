@@ -1,4 +1,4 @@
-package me.frauenfelderflorian.crocket;
+package me.frauenfelderflorian.croquet;
 
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
@@ -6,7 +6,7 @@ import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
-import me.frauenfelderflorian.crocket.data.Game;
+import me.frauenfelderflorian.croquet.data.Game;
 
 import java.util.ArrayList;
 import java.util.Arrays;

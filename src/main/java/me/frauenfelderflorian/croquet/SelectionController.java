@@ -1,4 +1,4 @@
-package me.frauenfelderflorian.crocket;
+package me.frauenfelderflorian.croquet;
 
 import javafx.fxml.FXML;
 import javafx.scene.Scene;

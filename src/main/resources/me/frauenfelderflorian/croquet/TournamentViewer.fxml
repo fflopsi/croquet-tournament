@@ -6,7 +6,7 @@
 <?import javafx.scene.text.*?>
 
 <VBox alignment="CENTER" spacing="10.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="me.frauenfelderflorian.crocket.TournamentViewerController">
+      fx:controller="me.frauenfelderflorian.croquet.TournamentViewerController">
     <Label fx:id="tournamentLabel" text="%tournament">
         <font>
             <Font name="System Bold" size="18.0"/>

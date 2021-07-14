@@ -6,7 +6,7 @@
 
 <GridPane fx:id="grid" alignment="CENTER_LEFT" hgap="10.0" prefWidth="500.0" vgap="10.0"
           xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"
-          fx:controller="me.frauenfelderflorian.crocket.SettingsEditorController">
+          fx:controller="me.frauenfelderflorian.croquet.SettingsEditorController">
     <TextField fx:id="currentTournamentEdit" promptText="%enterCurrentTournament" GridPane.columnIndex="1"
                GridPane.columnSpan="2" GridPane.hgrow="ALWAYS">
         <tooltip>

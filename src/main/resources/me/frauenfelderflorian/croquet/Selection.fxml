@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.*?>
 
 <GridPane fx:id="grid" alignment="CENTER" hgap="10.0" vgap="10.0" xmlns="http://javafx.com/javafx/11.0.1"
-          xmlns:fx="http://javafx.com/fxml/1" fx:controller="me.frauenfelderflorian.crocket.SelectionController">
+          xmlns:fx="http://javafx.com/fxml/1" fx:controller="me.frauenfelderflorian.croquet.SelectionController">
     <Button onAction="#createNewGame" text="%_newGame" GridPane.halignment="CENTER"/>
     <Button onAction="#viewTournament" text="%_tournamentOverview" GridPane.columnIndex="1"
             GridPane.halignment="CENTER"/>
