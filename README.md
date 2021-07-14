@@ -2,8 +2,9 @@
 
 **Welcome!**
 
-This is a Java program for managing a tournament (not necessarily Croquet 😉) with different games and players. You can add a game to the tournament,
-see an overview of the current standings, also with per-game details, and edit some settings.
+This is a JavaFX program for managing a tournament (not necessarily Croquet 😉) with different games and players.
+You can add a game to the tournament, see an overview of the current standings, also with per-game details,
+and edit some settings.
 
 The program has language support for German and default (English).
 
