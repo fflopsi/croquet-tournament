@@ -1,10 +1,8 @@
 # Default ignored files
 /shelf/
 /.idea/
+*.iml
 
 # built
 target/
 *.class
-
-# custom shell scripts
-*.sh
