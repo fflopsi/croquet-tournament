@@ -18,21 +18,21 @@ public class GameViewerController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         //set text for title label
-        tournamentLabel.setText(App.getString("tournament") + " " + App.tournament.getSemester());
+        tournamentLabel.setText(CroquetApp.getString("tournament") + " " + CroquetApp.tournament.getSemester());
         //set up labels for players
         int row = 1;
-        for (String player : App.tournament.getOrder().keySet()) {
+        for (String player : CroquetApp.tournament.getOrder().keySet()) {
             grid.add(new Label(player), 0, row);
             row++;
         }
         //set up labels for games
         int gameCol = 1;
-        for (Game game : App.tournament.getGames()) {
+        for (Game game : CroquetApp.tournament.getGames()) {
             grid.add(new Label(game.getDate().toString()), gameCol, 0);
             //set up labels for points
             int playerRow = 1;
-            for (String player : App.tournament.getOrder().keySet()) {
-                grid.add(new Label(String.valueOf(App.tournament.getGame(game.getDate()).getPointsPlayer(player))),
+            for (String player : CroquetApp.tournament.getOrder().keySet()) {
+                grid.add(new Label(String.valueOf(CroquetApp.tournament.getGame(game.getDate()).getPointsPlayer(player))),
                         gameCol, playerRow);
                 playerRow++;
             }

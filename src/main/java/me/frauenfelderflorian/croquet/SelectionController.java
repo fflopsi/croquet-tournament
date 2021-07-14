@@ -15,8 +15,8 @@ public class SelectionController {
     private void createNewGame() throws IOException {
         grid.getScene().getWindow().hide();
         Stage newGame = new Stage();
-        newGame.setScene(new Scene(App.loadFXML("GameEditor")));
-        newGame.setTitle(App.getString("newGame"));
+        newGame.setScene(new Scene(CroquetApp.loadFXML("GameEditor")));
+        newGame.setTitle(CroquetApp.getString("newGame"));
         newGame.show();
         newGame.setMinHeight(newGame.getHeight());
         newGame.setMinWidth(newGame.getWidth());
@@ -26,8 +26,8 @@ public class SelectionController {
     @FXML
     private void viewTournament() throws IOException {
         Stage tournamentViewer = new Stage();
-        tournamentViewer.setScene(new Scene(App.loadFXML("TournamentViewer")));
-        tournamentViewer.setTitle(App.getString("tournamentOverview"));
+        tournamentViewer.setScene(new Scene(CroquetApp.loadFXML("TournamentViewer")));
+        tournamentViewer.setTitle(CroquetApp.getString("tournamentOverview"));
         tournamentViewer.show();
         tournamentViewer.setMinHeight(tournamentViewer.getHeight());
         tournamentViewer.setMinWidth(tournamentViewer.getWidth());
@@ -39,8 +39,8 @@ public class SelectionController {
         //let user choose which game to edit
         grid.getScene().getWindow().hide();
         Stage editGame = new Stage();
-        editGame.setScene(new Scene(App.loadFXML("GameEditor")));
-        editGame.setTitle(App.getString("editGame"));
+        editGame.setScene(new Scene(CroquetApp.loadFXML("GameEditor")));
+        editGame.setTitle(CroquetApp.getString("editGame"));
         //fill in game info
         editGame.show();
         editGame.setMinHeight(editGame.getHeight());
@@ -52,8 +52,8 @@ public class SelectionController {
     private void editSettings() throws IOException {
         grid.getScene().getWindow().hide();
         Stage settingsEditor = new Stage();
-        settingsEditor.setScene(new Scene((App.loadFXML("SettingsEditor"))));
-        settingsEditor.setTitle(App.getString("settings"));
+        settingsEditor.setScene(new Scene((CroquetApp.loadFXML("SettingsEditor"))));
+        settingsEditor.setTitle(CroquetApp.getString("settings"));
         settingsEditor.show();
         settingsEditor.setMinHeight(settingsEditor.getHeight());
         settingsEditor.setMinWidth(settingsEditor.getWidth());

@@ -28,39 +28,39 @@ public class SettingsEditorController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        currentTournamentEdit.setText(App.tournament.getSemester());
-        playersEdit.setText(String.join(",", App.tournament.getPlayers()));
-        pointsEdit.setText(App.getPreference(App.preferenceKey.POINTS));
-        dataDirEdit.setText(App.getPreference(App.preferenceKey.DATA_DIR_PATH));
+        currentTournamentEdit.setText(CroquetApp.tournament.getSemester());
+        playersEdit.setText(String.join(",", CroquetApp.tournament.getPlayers()));
+        pointsEdit.setText(CroquetApp.getPreference(CroquetApp.preferenceKey.POINTS));
+        dataDirEdit.setText(CroquetApp.getPreference(CroquetApp.preferenceKey.DATA_DIR_PATH));
     }
 
     @FXML
     private void selectDataDir() {
         DirectoryChooser dataDirChooser = new DirectoryChooser();
-        dataDirChooser.setTitle(App.getString("selectDirectory"));
-        dataDirChooser.setInitialDirectory(new File(App.getPreference(App.preferenceKey.DATA_DIR_PATH)));
+        dataDirChooser.setTitle(CroquetApp.getString("selectDirectory"));
+        dataDirChooser.setInitialDirectory(new File(CroquetApp.getPreference(CroquetApp.preferenceKey.DATA_DIR_PATH)));
         dataDirEdit.setText(Objects.requireNonNullElse(dataDirChooser.showDialog(grid.getScene().getWindow()),
-                App.getPreference(App.preferenceKey.DATA_DIR_PATH)).toString());
+                CroquetApp.getPreference(CroquetApp.preferenceKey.DATA_DIR_PATH)).toString());
     }
 
     @FXML
     private void save() {
         //save current and load new tournament
         try {
-            App.tournament.save();
-            App.loadTournament(currentTournamentEdit.getText());
-            App.putPreference(App.preferenceKey.CURRENT_TOURNAMENT, currentTournamentEdit.getText());
+            CroquetApp.tournament.save();
+            CroquetApp.loadTournament(currentTournamentEdit.getText());
+            CroquetApp.putPreference(CroquetApp.preferenceKey.CURRENT_TOURNAMENT, currentTournamentEdit.getText());
         } catch (IOException e) {
             System.out.println("tournament could not be saved");
-            Alert alert = new Alert(Alert.AlertType.ERROR, App.getString("tournamentSaveError"));
+            Alert alert = new Alert(Alert.AlertType.ERROR, CroquetApp.getString("tournamentSaveError"));
             alert.showAndWait();
         }
         //save players
-        App.tournament.setPlayers(Arrays.asList(playersEdit.getText().split(",")));
+        CroquetApp.tournament.setPlayers(Arrays.asList(playersEdit.getText().split(",")));
         //save points
-        App.putPreference(App.preferenceKey.POINTS, pointsEdit.getText());
+        CroquetApp.putPreference(CroquetApp.preferenceKey.POINTS, pointsEdit.getText());
         //save data directory
-        App.putPreference(App.preferenceKey.DATA_DIR_PATH, dataDirEdit.getText());
+        CroquetApp.putPreference(CroquetApp.preferenceKey.DATA_DIR_PATH, dataDirEdit.getText());
     }
 
     @FXML

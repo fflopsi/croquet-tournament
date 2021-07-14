@@ -1,6 +1,6 @@
 package me.frauenfelderflorian.croquet.data;
 
-import me.frauenfelderflorian.croquet.App;
+import me.frauenfelderflorian.croquet.CroquetApp;
 
 import java.io.*;
 import java.time.LocalDate;
@@ -14,11 +14,11 @@ public class Tournament implements Serializable {
     public Tournament(String semester) {
         this.semester = semester;
         games = new ArrayList<>();
-        players = new ArrayList<>(Arrays.asList(App.getPreference(App.preferenceKey.PLAYERS).split(",")));
+        players = new ArrayList<>(Arrays.asList(CroquetApp.getPreference(CroquetApp.preferenceKey.PLAYERS).split(",")));
     }
 
     public void save() throws IOException {
-        FileOutputStream file = new FileOutputStream(App.getPreference(App.preferenceKey.DATA_DIR_PATH)
+        FileOutputStream file = new FileOutputStream(CroquetApp.getPreference(CroquetApp.preferenceKey.DATA_DIR_PATH)
                 + File.separator + "tournament_" + this.semester + ".ser");
         ObjectOutputStream out = new ObjectOutputStream(file);
         out.writeObject(this);
@@ -28,7 +28,7 @@ public class Tournament implements Serializable {
 
     public static Tournament load(String semester) throws IOException, ClassNotFoundException {
         Tournament tournament;
-        FileInputStream file = new FileInputStream(App.getPreference(App.preferenceKey.DATA_DIR_PATH)
+        FileInputStream file = new FileInputStream(CroquetApp.getPreference(CroquetApp.preferenceKey.DATA_DIR_PATH)
                 + File.separator + "tournament_" + semester + ".ser");
         ObjectInputStream in = new ObjectInputStream(file);
         tournament = (Tournament) in.readObject();
@@ -40,7 +40,7 @@ public class Tournament implements Serializable {
     public void setPlayers(List<String> players) {
         this.players.clear();
         this.players.addAll(players);
-        App.putPreference(App.preferenceKey.PLAYERS, String.join(",", players));
+        CroquetApp.putPreference(CroquetApp.preferenceKey.PLAYERS, String.join(",", players));
     }
 
     public List<String> getPlayers() {

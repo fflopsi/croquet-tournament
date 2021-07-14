@@ -21,7 +21,7 @@ import java.util.prefs.Preferences;
 /**
  * JavaFX App
  */
-public class App extends Application {
+public class CroquetApp extends Application {
 
     public static Tournament tournament;
     private static Preferences preferences;
@@ -29,7 +29,7 @@ public class App extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         //configure preferences
-        preferences = Preferences.userNodeForPackage(App.class);
+        preferences = Preferences.userNodeForPackage(CroquetApp.class);
         //configure data directory path preference
         putPreference(preferenceKey.DATA_DIR_PATH, getPreference(preferenceKey.DATA_DIR_PATH));
         File dataDir = new File(getPreference(preferenceKey.DATA_DIR_PATH));
@@ -123,13 +123,13 @@ public class App extends Application {
     }
 
     public static Parent loadFXML(String fxml) throws IOException {
-        return new FXMLLoader(App.class.getResource(fxml + ".fxml"),
+        return new FXMLLoader(CroquetApp.class.getResource(fxml + ".fxml"),
                 ResourceBundle.getBundle("me.frauenfelderflorian.croquet.Strings")).load();
     }
 
     public static String getString(String key) {
         if (!ResourceBundle.getBundle("me.frauenfelderflorian.croquet.Strings").containsKey(key))
-            throw new MissingResourceException("key " + key + " not found", App.class.getName(), key);
+            throw new MissingResourceException("key " + key + " not found", CroquetApp.class.getName(), key);
         return ResourceBundle.getBundle("me.frauenfelderflorian.croquet.Strings").getString(key);
     }
 

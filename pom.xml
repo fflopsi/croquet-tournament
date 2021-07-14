@@ -1,5 +1,5 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>me.frauenfelderflorian.croquet</groupId>
     <artifactId>CroquetTournament</artifactId>
@@ -8,6 +8,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>16</maven.compiler.source>
         <maven.compiler.target>16</maven.compiler.target>
+        <project.mainClass>me.frauenfelderflorian.croquet/me.frauenfelderflorian.croquet.CroquetApp</project.mainClass>
     </properties>
     <dependencies>
         <dependency>
@@ -26,7 +27,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.8.0</version>
+                <version>3.8.1</version>
                 <configuration>
                     <release>16</release>
                 </configuration>
@@ -41,10 +42,39 @@
                         <!-- Usage: mvn clean javafx:run -->
                         <id>default-cli</id>
                         <configuration>
-                            <mainClass>me.frauenfelderflorian.croquet/me.frauenfelderflorian.croquet.App</mainClass>
+                            <mainClass>${project.mainClass}</mainClass>
                             <jlinkImageName>croquet</jlinkImageName>
                             <jlinkZipName>croquet</jlinkZipName>
                             <launcher>launcher</launcher>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.panteleyev</groupId>
+                <artifactId>jpackage-maven-plugin</artifactId>
+                <version>1.5.1</version>
+                <configuration>
+                    <name>${project.artifactId}</name>
+                    <appVersion>${project.version}</appVersion>
+                    <vendor>me.frauenfelderflorian</vendor>
+                    <destination>target/dist</destination>
+                    <module>${project.mainClass}</module>
+                    <runtimeImage>target/croquet</runtimeImage>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>win</id>
+                        <configuration>
+                            <winDirChooser>true</winDirChooser>
+                            <winMenu>true</winMenu>
+                            <winShortcut>true</winShortcut>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>linux</id>
+                        <configuration>
+                            <linuxShortcut>true</linuxShortcut>
                         </configuration>
                     </execution>
                 </executions>

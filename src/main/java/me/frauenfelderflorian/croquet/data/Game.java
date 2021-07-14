@@ -1,6 +1,6 @@
 package me.frauenfelderflorian.croquet.data;
 
-import me.frauenfelderflorian.croquet.App;
+import me.frauenfelderflorian.croquet.CroquetApp;
 
 import java.io.Serializable;
 import java.time.LocalDate;
@@ -21,7 +21,7 @@ public class Game implements Serializable {
     }
 
     public void addPlacePoints(String player, int place) {
-        String[] points = App.getPreference(App.preferenceKey.POINTS).split(",");
+        String[] points = CroquetApp.getPreference(CroquetApp.preferenceKey.POINTS).split(",");
         this.points.put(player, Integer.parseInt(points[place]));
     }
 
