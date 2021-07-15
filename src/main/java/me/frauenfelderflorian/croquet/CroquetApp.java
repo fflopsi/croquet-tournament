@@ -139,8 +139,8 @@ public class CroquetApp extends Application {
 
     public enum preferenceKey {
         DATA_DIR_PATH("datadirpath", (System.getProperty("os.name")).toUpperCase().contains("WIN")
-                ? System.getenv("AppData") + File.separator + "CrocketTournament"
-                : System.getProperty("user.home") + File.separator + "CrocketTournament"),
+                ? System.getenv("AppData") + File.separator + "CroquetTournament"
+                : System.getProperty("user.home") + File.separator + "CroquetTournament"),
         CURRENT_TOURNAMENT("tournament", "2021.1"),
         PLAYERS("players",
                 "Ale,Alissa,Andrin,Berzan,Christian,Elias,Evelin,Fabian,Florian,Gian,Jan,Michael,Michi,Robin,Silvan,Tim"),
