@@ -6,3 +6,4 @@
 # built
 target/
 *.class
+out/
