@@ -144,7 +144,7 @@ public class CroquetApp extends Application {
         CURRENT_TOURNAMENT("tournament", "2021.1"),
         PLAYERS("players",
                 "Ale,Alissa,Andrin,Berzan,Christian,Elias,Evelin,Fabian,Florian,Gian,Jan,Michael,Michi,Robin,Silvan,Tim"),
-        POINTS("points", "20,17,15,14,13,12,11,10,9,8,7,6,5,4,3,2,1");
+        POINTS("points", "20,17,15,13,12,11,10,9,8,7,6,5,4,3,2,1");
 
         private final String key;
         private final String defaultValue;
