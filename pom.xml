@@ -3,12 +3,13 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>me.frauenfelderflorian.croquet</groupId>
     <artifactId>CroquetTournament</artifactId>
-    <version>0.2</version>
+    <version>1.0</version>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>16</maven.compiler.source>
         <maven.compiler.target>16</maven.compiler.target>
-        <project.mainClass>me.frauenfelderflorian.croquet/me.frauenfelderflorian.croquet.CroquetApp</project.mainClass>
+        <project.module>me.frauenfelderflorian.croquet</project.module>
+        <project.mainClass>me.frauenfelderflorian.croquet.CroquetApp</project.mainClass>
     </properties>
     <dependencies>
         <dependency>
@@ -21,7 +22,34 @@
             <artifactId>javafx-fxml</artifactId>
             <version>16</version>
         </dependency>
+        <!-- Uncomment for cross-platform fat jar: mvn clean compile jar:jar package
+        <dependency>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-graphics</artifactId>
+            <version>16</version>
+            <classifier>win</classifier>
+        </dependency>
+        <dependency>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-graphics</artifactId>
+            <version>16</version>
+            <classifier>linux</classifier>
+        </dependency>
+        <dependency>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-graphics</artifactId>
+            <version>16</version>
+            <classifier>mac</classifier>
+        </dependency>
+        -->
     </dependencies>
+    <pluginRepositories>
+        <pluginRepository>
+            <!-- Used for cross-platform fat jar -->
+            <id>maven-snapshots</id>
+            <url>https://repository.apache.org/content/repositories/snapshots/</url>
+        </pluginRepository>
+    </pluginRepositories>
     <build>
         <plugins>
             <plugin>
@@ -42,7 +70,7 @@
                         <!-- Usage: mvn clean javafx:run -->
                         <id>default-cli</id>
                         <configuration>
-                            <mainClass>${project.mainClass}</mainClass>
+                            <mainClass>${project.module}/${project.mainClass}</mainClass>
                             <jlinkImageName>croquet</jlinkImageName>
                             <jlinkZipName>croquet</jlinkZipName>
                             <launcher>launcher</launcher>
@@ -51,6 +79,43 @@
                 </executions>
             </plugin>
             <plugin>
+                <!-- Used for cross-platform fat jar -->
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>3.2.0</version>
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <mainClass>${project.mainClass}</mainClass>
+                            <addClasspath>true</addClasspath>
+                        </manifest>
+                    </archive>
+                </configuration>
+            </plugin>
+            <plugin>
+                <!-- Used for cross-platform fat jar -->
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-shade-plugin</artifactId>
+                <version>3.3.0-SNAPSHOT</version>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>shade</goal>
+                        </goals>
+                        <configuration>
+                            <transformers>
+                                <transformer
+                                        implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+                                    <mainClass>me.frauenfelderflorian.croquet.Main</mainClass>
+                                </transformer>
+                            </transformers>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <!-- Used for installer packaging: mvn clean javafx:jlink jpackage:jpackage -->
                 <groupId>org.panteleyev</groupId>
                 <artifactId>jpackage-maven-plugin</artifactId>
                 <version>1.5.1</version>
@@ -59,25 +124,13 @@
                     <appVersion>${project.version}</appVersion>
                     <vendor>me.frauenfelderflorian</vendor>
                     <destination>target/dist</destination>
-                    <module>${project.mainClass}</module>
+                    <module>${project.module}/${project.mainClass}</module>
                     <runtimeImage>target/croquet</runtimeImage>
+                    <winDirChooser>true</winDirChooser>
+                    <winMenu>true</winMenu>
+                    <winShortcut>true</winShortcut>
+                    <linuxShortcut>true</linuxShortcut>
                 </configuration>
-                <executions>
-                    <execution>
-                        <id>win</id>
-                        <configuration>
-                            <winDirChooser>true</winDirChooser>
-                            <winMenu>true</winMenu>
-                            <winShortcut>true</winShortcut>
-                        </configuration>
-                    </execution>
-                    <execution>
-                        <id>linux</id>
-                        <configuration>
-                            <linuxShortcut>true</linuxShortcut>
-                        </configuration>
-                    </execution>
-                </executions>
             </plugin>
         </plugins>
     </build>
